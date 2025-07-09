@@ -33,7 +33,7 @@ Clone this repository on your Docker host, cd into dockprom directory and run co
 git clone https://github.com/t0mer/grafana-stack
 cd grafana-stack
 
-ADMIN_USER='admin' ADMIN_PASSWORD='admin' docker-compose up -d
+ADMIN_USER='admin' ADMIN_PASSWORD='admin' docker compose up -d
 ```
 
 Prerequisites:
@@ -334,7 +334,7 @@ There are two possible solutions to this problem.
 
 To change ownership of the files run your grafana container as root and modify the permissions.
 
-First perform a `docker-compose down` then modify your docker-compose.yml to include the `user: root` option:
+First perform a `docker compose down` then modify your docker-compose.yml to include the `user: root` option:
 
 ```yaml
   grafana:
@@ -358,7 +358,7 @@ First perform a `docker-compose down` then modify your docker-compose.yml to inc
       org.label-schema.group: "monitoring"
 ```
 
-Perform a `docker-compose up -d` and then issue the following commands:
+Perform a `docker compose up -d` and then issue the following commands:
 
 ```bash
 docker exec -it --user root grafana bash
