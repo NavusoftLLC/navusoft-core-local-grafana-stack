@@ -5,7 +5,7 @@ global:
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
   external_labels:
-      monitor: 'docker-host-alpha'
+    monitor: 'docker-host-alpha'
 
 # Load and evaluate rules in this file every 'evaluation_interval' seconds.
 rule_files:
@@ -34,13 +34,18 @@ scrape_configs:
     static_configs:
       - targets: ['pushgateway:9091']
 
+  - job_name: 'core-actuator'
+    scrape_interval: 5s
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ['host.docker.internal:5200']
 
 alerting:
   alertmanagers:
-  - scheme: http
-    static_configs:
-    - targets: 
-      - 'alertmanager:9093'
+    - scheme: http
+      static_configs:
+        - targets:
+            - 'alertmanager:9093'
 
 #  - job_name: 'nginx'
 #    scrape_interval: 10s

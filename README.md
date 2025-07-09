@@ -1,3 +1,25 @@
+# navusoft-core local grafana-stack
+
+This is just a quick fork of https://github.com/t0mer/grafana-stack preconfigured to monitor actuator when running navusoft-core locally.
+
+**This is also assuming you are running navusoft-core via docker compose**, if running bare metal you'll have to configure spring and actuator post in your application-dev.properties. 
+
+In your navusoft-core docker-compose.yaml update the navusoft-core service ports to:
+
+```dockerfile
+    ports:
+      - "8081:8080"
+      - "5200:5200"
+```
+
+Then fire the app up via docker compose:
+
+https://github.com/NavusoftLLC/navusoft-core/?tab=readme-ov-file#local-development---docker-experimental
+
+You can also import this out of the box dashboard to get you started after everything is up and running:
+
+https://grafana.com/grafana/dashboards/12464-spring-boot-statistics/
+
 # grafana-stack
 
 A monitoring solution for Docker hosts and containers with [Prometheus](https://prometheus.io/), [Grafana](http://grafana.org/), [cAdvisor](https://github.com/google/cadvisor),
